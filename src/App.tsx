@@ -192,9 +192,14 @@ export default function App() {
               setIsUnwrap(false);
               setIsWrap(false);
             }}>Bridge</h2>
-              <h2 className="text-xl text-gray-400 lg:text-3xl px-4 font-extralight cursor-pointer" onClick={()=> setIsUnwrap(true)}>Unwrap</h2>
 
-              <h2 className="text-xl text-gray-400 lg:text-3xl px-4 font-extralight cursor-pointer" onClick={()=> setIsWrap(true)}>Wrap</h2>
+{fromChain.name=="Nexis Testnet"?
+<>
+<h2 className="text-xl text-gray-400 lg:text-3xl px-4 font-extralight cursor-pointer" onClick={()=> setIsUnwrap(true)}>Unwrap</h2>
+<h2 className="text-xl text-gray-400 lg:text-3xl px-4 font-extralight cursor-pointer" onClick={()=> setIsWrap(true)}>Wrap</h2>
+</>:<></>
+
+}
           </div>
           <div className="rounded-xl bg-gray-900/5 p-2 center ring-1 shadow-2xl ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
           <Card>

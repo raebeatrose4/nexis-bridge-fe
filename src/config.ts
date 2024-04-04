@@ -6,7 +6,7 @@ const config = {
 
   chainImage: {
     [nexisTestnet.id]: "/images/chains/NZT.svg",
-    [fantomTestnet.id]:"/images/chains/ETH.svg"
+    [fantomTestnet.id]:"/images/chains/FTM.png"
   },
 
   bridge: {
