@@ -18,6 +18,8 @@ import { useDebounce } from "react-use";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { fetchInfo } from "./lib/fetch";
 import { JSX } from "react/jsx-runtime";
+import Unwrap from "./Unwrap";
+import Wrap from "./Wrap";
 
 export default function App() {
   const { swap, fetchTokenBalance, calculateGasFee } = useWeb3Functions();
@@ -174,17 +176,25 @@ export default function App() {
     );
   }, []);
 
+  const [isUnwrap,setIsUnwrap] = useState<boolean>(false);
+  const [isWrap,setIsWrap] = useState<boolean>(false);
+
   return (
     <div className="flex flex-col min-h-screen">
+      {!isUnwrap && !isWrap?
+      <>
       <Header />
       <main className="flex flex-col items-center justify-center flex-1">
         <div className="w-full max-w-xl mx-auto">
-          <div className="flex items-center justify-between gap-4 mb-8">
-            <h2 className="text-xl font-bold lg:text-4xl">Bridge</h2>
-            {/* <p>
-              <span className="text-sm text-[#637592] mr-1">(0)</span>
-              <span className="font-bold">Recent Transactions</span>
-            </p> */}
+          <div className="flex items-center  gap-4 mb-8">
+
+            <h2 className="text-xl font-bold lg:text-4xl" onClick={() =>{
+              setIsUnwrap(false);
+              setIsWrap(false);
+            }}>Bridge</h2>
+              <h2 className="text-xl text-gray-400 lg:text-3xl px-4 font-extralight cursor-pointer" onClick={()=> setIsUnwrap(true)}>Unwrap</h2>
+
+              <h2 className="text-xl text-gray-400 lg:text-3xl px-4 font-extralight cursor-pointer" onClick={()=> setIsWrap(true)}>Wrap</h2>
           </div>
           <div className="rounded-xl bg-gray-900/5 p-2 center ring-1 shadow-2xl ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
           <Card>
@@ -300,6 +310,10 @@ export default function App() {
         </div>
       </footer>
       </main>
+      </>
+      : !isWrap?<Unwrap setIsUnwrap={setIsUnwrap} setIsWrap={setIsWrap}/>: <Wrap  setIsUnwrap={setIsUnwrap} setIsWrap={setIsWrap} isWrap={isWrap}/>}
+      
     </div>
+   
   );
 }
