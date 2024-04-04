@@ -4,12 +4,6 @@ import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { cn } from "@/lib/utils";
 import config from "@/config";
 
-const links = [
-  { name: "Router", link: "#", active: true },
-  { name: "Pool", link: "#" },
-  { name: "Wrap", link: "#" },
-  { name: "Dex", link: "#" },
-];
 
 export default function Header() {
   const { isConnected, address } = useAccount();
@@ -32,7 +26,7 @@ export default function Header() {
         </a>
 
         <div className="items-center hidden gap-3 lg:flex">
-          {links.map((link, key) => (
+          {/* {links.map((link, key) => (
             <a
               key={key}
               href={link.link}
@@ -45,7 +39,7 @@ export default function Header() {
             >
               {link.name}
             </a>
-          ))}
+          ))} */}
         </div>
 
         <div className="flex gap-4">

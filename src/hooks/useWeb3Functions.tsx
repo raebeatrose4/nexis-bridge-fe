@@ -112,14 +112,13 @@ const useWeb3Functions = () => {
       }
 
       const params = [
-        walletClient.account.address,
-        token.contract,
-        value,
         BigInt(targetChain.id),
+        walletClient.account.address,
+        value,
       ] as const;
 
-      const { request } = await bridgeContract.simulate.deposit(params, {
-        value: token.contract !== zeroAddress ? 0n : value,
+      console.log(params)
+      const { request } = await bridgeContract.simulate.bridge(params, {
         account: walletClient.account,
         gasPrice:
           chain.nativeCurrency.symbol === "nexis" ? parseGwei("100") : undefined,

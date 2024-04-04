@@ -12,8 +12,8 @@ export const nexisTestnet = {
     decimals: 18,
   },
   rpcUrls: {
-    default: { http: ["https://evm-test.nexis.network"] },
-    public: { http: ["https://evm-test.nexis.network"] },
+    default: { http: ["https://evm-testnet.nexis.network"] },
+    public: { http: ["https://evm-testnet.nexis.network"] },
   },
   blockExplorers: {
     default: {

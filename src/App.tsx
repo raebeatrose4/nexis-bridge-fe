@@ -30,30 +30,6 @@ export default function App() {
     useStore();
 
     const footerNavigation = {
-      solutions: [
-        { name: 'Hosting', href: '#' },
-        { name: 'Data Services', href: '#' },
-        { name: 'Uptime Monitoring', href: '#' },
-        { name: 'Enterprise Services', href: '#' },
-      ],
-      support: [
-        { name: 'Pricing', href: '#' },
-        { name: 'Documentation', href: '#' },
-        { name: 'Guides', href: '#' },
-        { name: 'API Reference', href: '#' },
-      ],
-      company: [
-        { name: 'About', href: '#' },
-        { name: 'Blog', href: '#' },
-        { name: 'Jobs', href: '#' },
-        { name: 'Press', href: '#' },
-        { name: 'Partners', href: '#' },
-      ],
-      legal: [
-        { name: 'Claim', href: '#' },
-        { name: 'Privacy', href: '#' },
-        { name: 'Terms', href: '#' },
-      ],
       social: [
         {
           name: 'Discord',
@@ -128,8 +104,7 @@ export default function App() {
 
   useEffect(() => {
     if (amount && token) {
-      const value = Number(amount) - fee;
-      setReceviedAmount(value > 0 ? value : 0);
+      setReceviedAmount(amount);
     } else setReceviedAmount("");
   }, [token, amount, fee]);
 
@@ -247,7 +222,8 @@ export default function App() {
                   <ArrowDownIcon size={20} />
                 </Button>
               </div>
-              <div className="flex items-center justify-end mb-2">
+              
+              <div className={`flex items-center justify-end mb-2`}>              
                 <SelectChainDropdown
                   label="To:"
                   chain={toChain}
@@ -275,7 +251,9 @@ export default function App() {
               {isConnected ? (
                 <Button
                   className="w-full h-auto p-4 mt-8 font-bold"
-                  onClick={() => submit()}
+                  onClick={() => {
+                      submit()
+                  }}
                   disabled={
                     loading ||
                     +tokenBalance < +amount ||
@@ -288,7 +266,7 @@ export default function App() {
                   {loading && (
                     <Loader2Icon className="mr-2 animate-spin" size={20} />
                   )}
-                  Confirm swap
+                Bridge
                 </Button>
               ) : (
                 <Button
